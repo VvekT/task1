@@ -1,0 +1,103 @@
+.dashboard-middle-section {
+    .dashboard-counter-button {
+        top: 52px;
+        position: relative;
+        right: 1rem;
+
+        button {
+            padding: 0px 1rem;
+            color: #000000;
+            font-weight: 300;
+            border: 1px solid #000000;
+            min-height: 2.7rem;
+            min-width: auto;
+            border-radius: 10px;
+        }
+
+        span {
+            display: contents;
+
+            svg {
+                fill: #000000;
+            }
+        }
+    }
+}
+
+.right-float-main {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    height: 70px;
+
+    .hairline-add {
+        height: 36px;
+        top: -16px;
+        position: relative;
+
+        hr {
+            height: 36px;
+        }
+    }
+}
+
+.right-float {
+    float: right;
+}
+
+.img {
+    height: 50px;
+    font-size: 5px;
+    padding: 5px;
+    margin: 10px;
+}
+
+.cmNAmb {
+    padding-top: 0px;
+}
+
+.elSFMN {
+    min-width: 100%;
+    margin: 0;
+}
+
+.react-tabs {
+
+    .jmfmfJ {
+        // margin-top: -21px;
+        position: relative;
+        z-index: -9;
+    }
+}
+
+.hRbjD {
+    padding-bottom: 0px;
+    color: #9fa0a1;
+
+    h4 {
+        font-weight: 600;
+    }
+}
+
+.cmNAmb .react-tabs__tab:active h4,
+.cmNAmb .react-tabs__tab.react-tabs__tab--selected h4 {
+    text-shadow: none;
+    color: #000000;
+}
+
+@media only screen and (max-width: 575px) {
+    .dashboard-middle-section {
+        .dashboard-counter-button {
+            .count-view-text {
+                display: none;
+            }
+
+            button {
+                position: relative;
+                top: -74px;
+                left: 20px;
+                margin: 15px 0 15px 0;
+            }
+        }
+    }
+}

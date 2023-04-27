@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  creationTimestamp: null
+  labels:
+    app: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+      creationTimestamp: null
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - image: registry-tpc.tsl.telus.com/private-cloud/applications/willow/frontend:latest
+          imagePullPolicy: IfNotPresent
+          name: frontend
+          lifecycle:
+            postStart:
+              exec:
+                command: 
+                  - "sh"
+                  - "-c"
+                  - >
+                    cp /var/secrets/.env /app;
+          resources: {}
+          volumeMounts:
+            - mountPath: /var/secrets
+              name: env
+      restartPolicy: Always
+      volumes:
+        - name: env
+          secret:
+            secretName: env-frontend
+
+      imagePullSecrets:
+        - name: regcred 
+
+status: {}

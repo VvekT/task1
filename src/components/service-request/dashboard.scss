@@ -1,0 +1,247 @@
+.cl-green {
+  color: #2b8000;
+}
+
+.dashboard-para-activities {
+  margin-left: 1rem;
+}
+
+.close_top {
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+
+  >i {
+    padding: 5px;
+  }
+}
+
+.dashboard-tab-container {
+  .service-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    flex: 1 0 auto;
+
+    &>div {
+      flex: 50%;
+      margin-bottom: 10px;
+      justify-content: space-around;
+
+      & :nth-child(1) {
+        margin-right: 18px;
+      }
+    }
+
+    .heading-text {
+      display: flex;
+      justify-content: space-between;
+      height: 45px;
+      align-items: center;
+    }
+
+    .iKCvWI {
+      border-radius: 10px;
+      margin-bottom: 30px;
+      border: 1px solid #aaa8a8;
+    }
+
+    .status-card {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      margin-top: 10px;
+
+      // margin: 0 auto;
+      :not(:last-child) {
+        margin-right: 10px;
+      }
+
+      .status-card-box {
+        padding: 0.5rem 1rem 1rem;
+        background: #e8e8e8 0% 0% no-repeat padding-box;
+        border: 1px solid #dbdbdb;
+        border-radius: 15px;
+        height: 70px;
+        text-align: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @media (min-width: 576px) {
+          padding: 0.5rem;
+        }
+      }
+    }
+
+    .badge {
+      background: #c12335 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+      border-radius: 8px;
+      padding: 5px 10px 4px;
+      text-align: center;
+      color: #ffffff;
+      display: inline-block;
+      margin-right: 1rem;
+    }
+
+    .badge-black {
+      background: #2a2c2e 0% 0% no-repeat padding-box;
+      box-shadow: 0px 3px 6px #00000029;
+    }
+
+    .status-redirect-link {
+      display: flex;
+      align-items: center;
+
+      a {
+        margin-right: 1rem;
+        text-decoration: none;
+      }
+    }
+
+    .status-accessible-link {
+      a {
+        margin-right: 1rem;
+        text-decoration: none;
+
+        p {
+          color: #2b8000;
+        }
+      }
+    }
+
+    .status-contact-box {
+      margin-top: 20px;
+
+      .jOaEpy {
+        font-weight: 300;
+      }
+    }
+
+    .serice-request-link {
+      margin-top: 10px;
+      margin-bottom: 10px;
+
+      a {
+        color: #2b8000;
+        text-decoration: none;
+        font-weight: 400;
+      }
+    }
+
+    .services-tag-contianer {
+      .services-tags {
+        background: #000000;
+        color: #ffffff;
+        padding: 4px 9px 4px;
+        border-radius: 11px;
+        font-size: 12px;
+        display: inline-block;
+        margin: 3px;
+        font-weight: 300;
+      }
+    }
+  }
+
+  .service-table-container {
+    .cmNAmb {
+      margin-top: -3rem;
+    }
+
+    .elSFMN {
+      max-width: 100%;
+      margin: 0;
+    }
+  }
+
+  .eWYAcr {
+    border: 1px solid #aaa8a8;
+    border-radius: 10px;
+    font-weight: 300;
+
+    // padding: 0.5rem 1.5rem 0.5rem;
+    .dBNkXd {
+      color: #9fa0a1;
+    }
+  }
+
+  .Vjetc {
+    padding: 1.2rem;
+    border: 1px solid #aaa8a8;
+    border-radius: 10px;
+  }
+
+  .heading-icon-more {
+    position: relative;
+    float: right;
+  }
+
+  .fjqtsb {
+    margin-top: 5px;
+  }
+}
+
+/**my cases scss */
+.mycases-counter-button {
+  position: relative;
+  top: -80px;
+
+  button {
+    background: #2b800010;
+    border-radius: 8px;
+    font-weight: 400;
+  }
+}
+
+.mycases-table-container {
+  margin-top: -70px;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 575px) {
+  .dashboard-tab-container {
+    .status-card {
+      display: grid;
+      flex-direction: column;
+
+      .status-card-box {
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+/* Added by Vaishali*/
+
+.status-accessible-link .Row__StyledRow-sc-1goz0ht-0.lgsRbS {
+  row-gap: normal;
+}
+
+@media (min-width: 1200px) {
+  .lgsRbS {
+    row-gap: 55px;
+  }
+}
+
+.iwBUWy {
+  border-radius: 10px;
+  margin-left: -12px;
+}
+
+.dashboard-tab-container .service-container .status-accessible-link a {
+  margin-right: 0;
+}
+
+/* for view button*/
+@media only screen and (min-width: 576px) and (max-width: 769px) {
+  .dashboard-middle-section {
+    .dashboard-counter-button {
+      top: 30px;
+      text-align: left;
+      max-width: 200px;
+      margin-left: 43px;
+    }
+  }
+}
+
+/* view button end*/

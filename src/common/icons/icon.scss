@@ -1,0 +1,32 @@
+.sz32 {
+  width: 32px;
+  height: 32px;
+}
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    margin-left: 1rem;
+  }
+}
+.svg-black {
+  path {
+    fill: #000000;
+  }
+}
+.svg-white {
+  path {
+    fill: #ffffff;
+  }
+}
+.svg-inverted {
+  path {
+    fill: #4b286d;
+  }
+}
+.svg-green {
+  path {
+    fill: #2b8000;
+  }
+}

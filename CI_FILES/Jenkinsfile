@@ -1,0 +1,78 @@
+pipeline {
+
+  agent {
+    kubernetes {
+      yamlFile './CI_FILES/builder.yaml'
+    }
+  }
+  
+  environment {
+    IMAGE = 'registry-tpc.tsl.telus.com/private-cloud/applications/willow/frontend'
+    CONTAINER_REGISTRY = 'registry-tpc.tsl.telus.com'
+    REGCRED = credentials('REGISTRY_CREDS')
+    LOADBALANCER_IP = '10.70.20.159'
+    NAMESPACE = 'willow-frontend'
+    DNS = 'willow-kidcdv.dv.pc.local'
+//  Environment variables for .env file
+    BACKEND_URL = 'http://backend.willow.svc.cluster.local:3000/willow'
+  }
+  
+  parameters { 
+    choice choices: ['NO', 'YES'], description: 'Build Docker image?', name: 'BUILD'
+    choice choices: ['YES', 'NO'], description: 'Deploy to Kubernetes?', name: 'DEPLOY'
+    booleanParam(name: 'REDEPLOYPOD', defaultValue: true, description: 'Do you want to redeploy the pod pod?')
+  }
+
+  stages {
+
+    stage('Kaniko Build & Push Image') {
+      when {
+        expression { params.BUILD == 'YES' }
+      }     
+     
+      steps {
+        container('kaniko') {
+          script {
+            sh '''
+            /kaniko/executor --dockerfile `pwd`/CI_FILES/Dockerfile \
+                             --context `pwd` \
+                             --destination=${IMAGE}:${BUILD_NUMBER} \
+                             --destination=${IMAGE}:latest
+            '''
+          }
+        }
+      }
+    }
+
+    stage('Deploy App to Kubernetes') {
+      when {
+        expression { params.DEPLOY == 'YES' }
+      }
+      steps {
+        container('kubectl') {
+          withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
+//             sh 'sed -i "s/<TAG>/${BUILD_NUMBER}/" myweb.yaml'
+//             sh 'kubectl apply -f myweb.yaml'
+            sh "chmod +x -R ${env.WORKSPACE}"
+            sh './CI_FILES/deploy.sh'
+            sh 'ls -la && pwd'
+          }
+        }
+      }
+    }
+    
+    stage('Redeploy pod') {
+      when {
+        expression { params.REDEPLOYPOD == true }
+      }
+      steps {
+        container('kubectl') {
+          withCredentials([file(credentialsId: 'mykubeconfig', variable: 'KUBECONFIG')]) {
+            sh 'kubectl -n ${NAMESPACE}  delete pods --selector=app=frontend'
+          }
+        }
+      }
+    }
+  
+  }
+}

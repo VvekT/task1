@@ -1,0 +1,26 @@
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
+  }
+  
+  .flex-item-left {
+    /* background-color: #f1f1f1; */
+    padding: 10px;
+    flex: 80%;
+  }
+  
+  .flex-item-right {
+    /* background-color: dodgerblue; */
+    padding: 10px;
+    flex: 20%;
+    float: right;
+  }
+  
+  /* Responsive layout - makes a one column-layout instead of two-column layout */
+  @media (max-width: 800px) {
+    .flex-container {
+      flex-direction: column;
+    }
+  }
